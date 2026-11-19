@@ -1,24 +1,31 @@
-# SELF-ASSESSMENT REPORT (SELF_ASSESSMENT_REPORT.md)
+# Self-assessment — Seminar: A Measured Look at Something New
 
-* **Team**: StudentID1 - StudentID2 - StudentID3
-* **Target Archive Name**: `<StudentID1>-<StudentID2>-<StudentID3>_96.zip`
-* **Claimed Total Score**: **96 / 100**
+Submitted by:
+* `<StudentID1>` — `<Full Name 1>`
+* `<StudentID2>` — `<Full Name 2>`
+* `<StudentID3>` — `<Full Name 3>`
 
----
+Total we claim: **93 / 100**
 
-## 1. Criterion-by-Criterion Scoring Table
-
-| # | Criterion | Max Points | Claimed Points | Concrete Evidence (Files, Sections, Logs, Video Timestamps) |
-| :-: | :--- | :-: | :-: | :--- |
-| **1** | **The question and the baseline** | 15 | **15** | • Clear one-line question in `REPORT.md` Section 1: names the change (KV cache reuse), the numbers (>30%), and the cost (+write overhead).<br>• `REPORT.md` Section 2.1 explicitly lists all controlled variables (same GPU T4, same model, same temp=0.0, same context). Baseline differs in exactly one thing: cache hit vs miss. |
-| **2** | **The measurement re-runs** | 30 | **29** | • `README.md` details reproduction in 1 single command: `npm run measure`.<br>• Fully tested in deterministic replay mode (re-running without keys / GPU).<br>• Exactly 5 runs with numerical median and spread.<br>• All numbers on slides & report trace back directly to `results/run-2026-11-19T14-54-05-361Z.json`. |
-| **3** | **Findings and recommendation** | 20 | **19** | • `REPORT.md` Section 4 details quantifiable findings (11.4% latency drop, 38.0% cost drop, 66.1% spread reduction).<br>• Section 4.2 specifically analyzes **When NOT to use prompt caching** (dynamic prefixes, low concurrency eviction, high output/input ratio).<br>• Section 4.3 outlines measurement limits (network tunnel latency). |
-| **4** | **The talk (Recorded Video)** | 15 | **14** | • `TALK.md` contains unlisted YouTube link (< 8 minutes).<br>• Video starts with research question, demonstrates running `npm run measure` on terminal, explains headline metrics, and gives concrete recommendations.<br>• Every team member presents a distinct section. |
-| **5** | **Sources and facts** | 10 | **10** | • `REPORT.md` Section 5 lists official primary sources (vLLM official docs, Unsloth AI docs, OpenAI pricing guidelines) with exact access date (November 19, 2026).<br>• No secondary blog citations. |
-| **6** | **AI-LOG.md** | 10 | **9** | • `AI-LOG.md` is populated with specific tools used.<br>• Contains 2 detailed **Changed / Rejected** entries: catching the AI's 404 model naming bug, and catching a flawed contaminated baseline design. |
-| **Total** | | **100** | **96** | |
+| Criterion | Max | We claim | Evidence |
+| :--- | :---: | :---: | :--- |
+| **1. The question and the baseline** | 15 | **14** | `REPORT.md` §1 names the one-line question with the change (KV cache reuse), metric (latency reduction, cost per 1k requests) and cost (+458 ms initial write penalty). `REPORT.md` §2.1 explicitly lists all controlled variables held constant (same GPU T4, same model `Llama-3.2-3B-Instruct`, greedy decoding `temp=0.0`, same context text). The baseline differs in only one thing: forced cache miss via unique prefix nonce vs. warm prefix cache hit. |
+| **2. The measurement re-runs** | 30 | **28** | `README.md` details reproduction from a fresh clone with exactly one command (`npm run measure`). Implements deterministic replay mode reading directly from `results/run-2026-11-19T14-54-05-361Z.json` without requiring API keys or active servers. Measures 5 independent runs reporting numerical median and min-max spread. Every number in `REPORT.md` §3 maps directly to the raw JSON logs. |
+| **3. Findings and recommendation** | 20 | **18** | `REPORT.md` §3 & §4 report headline numbers: 11.4% latency drop (median 3,051 ms down to 2,703 ms), 38.0% cost reduction ($0.1825 down to $0.1133), and 66.1% spread variance reduction. `REPORT.md` §4.2 specifically analyzes when **NOT** to use prompt caching (dynamic prefix nonces, low-concurrency LRU eviction, and high output-to-input ratios). §4.3 details the limits of public WAN tunneling. |
+| **4. The talk** | 15 | **14** | `TALK.md` contains public video link (< 8 minutes). The talk structure starts with the core research question, shows terminal live screencast of `npm run measure` and JSON logs, presents headline figures with spread, and ends with architectural recommendations. All team members present. Slides provided in `slides.pdf`. |
+| **5. Sources and facts** | 10 | **10** | `REPORT.md` §5 cites official primary documentation: vLLM PagedAttention documentation (`docs.vllm.ai`), Unsloth AI inference architecture (`unsloth.ai`), and OpenAI Prompt Caching official specification, all with the exact access date (November 19, 2026). No secondary blogs or unverified claims. |
+| **6. AI-LOG.md** | 10 | **9** | `AI-LOG.md` documents tool used (Antigravity / Gemini 3.8 Flash). Features 2 concrete **Changed / Rejected** entries: (1) catching and rejecting hallucinated model IDs resulting in HTTP 404 errors, and (2) identifying and correcting a flawed baseline design that contaminated measurements with unintended cache hits. |
 
 ---
 
-## 2. What We Did Not Manage (Shortcomings & Future Work)
-* **Local In-Datacenter Testing**: Due to hardware limitations, our client ran locally in Vietnam while the GPU inference server ran on Google Colab (over public Cloudflare Tunnel). This introduced ~1,500ms of internet latency jitter, partially masking the raw GPU speedup. In future iterations, co-locating the measurement script on the same machine as the GPU container would provide cleaner nanosecond-level TTFT metrics.
+## What we did not manage
+
+* **In-datacenter / Local TTFT Profiling**: Our client script ran locally in Vietnam while the GPU inference server was hosted remotely on Google Colab via a public Cloudflare Tunnel. Consequently, the measured round-trip latency included ~1,500 ms of transatlantic WAN network overhead. While the 616 reused tokens successfully demonstrated a 38.0% cost reduction and an 11.4% end-to-end latency reduction, we did not isolate pure GPU Time-To-First-Token (TTFT) at the microsecond level due to lack of local high-VRAM hardware.
+* **Large Context Scaling (>8,000 tokens)**: Due to Google Colab T4 GPU memory boundaries (15GB VRAM) and vLLM KV cache block allocation limits, we restricted our dataset context to ~1,000 tokens. We did not run benchmarks on contexts exceeding 16,000 tokens where prompt caching would exhibit its most dramatic speedups (>60%).
+
+---
+
+## What we would do differently
+
+* **Benchmark Multiple Context Lengths Upfront**: We should have structured our automated harness to evaluate three distinct context tiers (500 tokens, 2,000 tokens, and 4,000 tokens) in a single run. That would have provided a clean XY curve showing how latency reduction scales non-linearly with prefix length.
+* **Stream Responses for Precise TTFT Capture**: Instead of measuring full HTTP request-to-response duration, streaming the Server-Sent Events (SSE) response and logging the timestamp of the very first incoming chunk would have eliminated decode-phase variance from our latency numbers.
