@@ -1,0 +1,10 @@
+Team work, project teams of up to 3 · 100 points · 7% of the course. The brief and rubric are attached — read them before you start.
+
+Pick something new in web development, ask one question about it, and answer it with a measurement anyone can re-run. The topic list in the brief is only a suggestion: you may bring your own topic. Every team hands in a short study and a recorded talk. The class votes, and the nine teams with the most votes present live in a lecture session (Thursday, December 3, 10 and 17). The seminar is not part of the final exam.
+
+1. Register your topic in the attached sheet by Sunday, November 15, 2026, 22:00. Write your student IDs in the row of the topic you take, or in an Own topic row with your title and your question. Each topic goes to one team; the first team in the row has it.
+2. Build the study in a public GitHub repository: a baseline and a change, one command that re-runs the measurement, at least five runs, REPORT.md (at most three pages), slides.pdf, and a recorded talk of at most 8 minutes linked in TALK.md.
+3. Turn in by Sunday, November 29, 2026, 22:00 — one member, from their <StudentID>@student.hcmus.edu.vn account: one zip of the repository including .git, named <StudentID1>-<StudentID2>-<StudentID3>_<self-assessed total>.zip in ascending order (e.g. 23120001-23120002-23120003_84.zip), containing REPORT.md, slides.pdf, TALK.md, AI-LOG.md and SELF_ASSESSMENT_REPORT.md. By the same time, post your study in the Facebook group, starting with #AWADSeminar23_3, for the vote.
+4. Red team: the pairs are announced on Monday, November 30. By Wednesday, December 2, 2026, 22:00, open one issue titled [red-team] <your student IDs> on the other team's repository. A team that files no issue loses 10 points.
+
+Voting closes on Tuesday, December 1, 22:00; only reactions from students of this class count. The presenting teams are announced on Wednesday, December 2.

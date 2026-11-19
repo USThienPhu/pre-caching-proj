@@ -1,0 +1,132 @@
+[
+  {
+    "runIndex": 1,
+    "baseline": {
+      "latencyMs": 1205,
+      "promptTokens": 4200,
+      "cachedTokens": 0,
+      "outputTokens": 126,
+      "costPer1kUSD": 0.7056
+    },
+    "change": {
+      "cacheWrite": {
+        "latencyMs": 1317,
+        "promptTokens": 4200,
+        "cachedTokens": 0,
+        "outputTokens": 0,
+        "costPer1kUSD": 0.63
+      },
+      "cacheHit": {
+        "latencyMs": 543,
+        "promptTokens": 4200,
+        "cachedTokens": 4200,
+        "outputTokens": 126,
+        "costPer1kUSD": 0.2331
+      }
+    }
+  },
+  {
+    "runIndex": 2,
+    "baseline": {
+      "latencyMs": 1166,
+      "promptTokens": 4200,
+      "cachedTokens": 0,
+      "outputTokens": 127,
+      "costPer1kUSD": 0.7062
+    },
+    "change": {
+      "cacheWrite": {
+        "latencyMs": 1298,
+        "promptTokens": 4200,
+        "cachedTokens": 0,
+        "outputTokens": 0,
+        "costPer1kUSD": 0.63
+      },
+      "cacheHit": {
+        "latencyMs": 482,
+        "promptTokens": 4200,
+        "cachedTokens": 4200,
+        "outputTokens": 127,
+        "costPer1kUSD": 0.2337
+      }
+    }
+  },
+  {
+    "runIndex": 3,
+    "baseline": {
+      "latencyMs": 1116,
+      "promptTokens": 4200,
+      "cachedTokens": 0,
+      "outputTokens": 128,
+      "costPer1kUSD": 0.7068
+    },
+    "change": {
+      "cacheWrite": {
+        "latencyMs": 1363,
+        "promptTokens": 4200,
+        "cachedTokens": 0,
+        "outputTokens": 0,
+        "costPer1kUSD": 0.63
+      },
+      "cacheHit": {
+        "latencyMs": 526,
+        "promptTokens": 4200,
+        "cachedTokens": 4200,
+        "outputTokens": 128,
+        "costPer1kUSD": 0.2343
+      }
+    }
+  },
+  {
+    "runIndex": 4,
+    "baseline": {
+      "latencyMs": 1147,
+      "promptTokens": 4200,
+      "cachedTokens": 0,
+      "outputTokens": 129,
+      "costPer1kUSD": 0.7074
+    },
+    "change": {
+      "cacheWrite": {
+        "latencyMs": 1340,
+        "promptTokens": 4200,
+        "cachedTokens": 0,
+        "outputTokens": 0,
+        "costPer1kUSD": 0.63
+      },
+      "cacheHit": {
+        "latencyMs": 535,
+        "promptTokens": 4200,
+        "cachedTokens": 4200,
+        "outputTokens": 129,
+        "costPer1kUSD": 0.2349
+      }
+    }
+  },
+  {
+    "runIndex": 5,
+    "baseline": {
+      "latencyMs": 1202,
+      "promptTokens": 4200,
+      "cachedTokens": 0,
+      "outputTokens": 125,
+      "costPer1kUSD": 0.705
+    },
+    "change": {
+      "cacheWrite": {
+        "latencyMs": 1290,
+        "promptTokens": 4200,
+        "cachedTokens": 0,
+        "outputTokens": 0,
+        "costPer1kUSD": 0.63
+      },
+      "cacheHit": {
+        "latencyMs": 480,
+        "promptTokens": 4200,
+        "cachedTokens": 4200,
+        "outputTokens": 125,
+        "costPer1kUSD": 0.2325
+      }
+    }
+  }
+]

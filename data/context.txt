@@ -1,0 +1,24 @@
+# Constitution of the Virtual Organization & Core Operating Guidelines
+
+## Section 1: Introduction and Purpose
+This document serves as the primary system context and operational manual for all agentic workflows within our decentralized collaborative network. Every automated entity, API interaction, and automated pipeline must align strictly with the principles and rules defined across the following sections. All processing requests must preserve privacy, ensure auditability, and optimize token utilization.
+
+## Section 2: Architectural Principles
+The architecture is structured upon event-driven, local-first, and highly concurrent execution blocks. Each subsystem must decouple compute from persistence, relying on append-only event streams and immutable states. Communication between nodes uses standardized messaging interfaces, ensuring zero-trust verification across every inbound socket. In the event of network partition or latency spikes exceeding 500 milliseconds, downstream components must degrade gracefully by falling back to cached snapshots or read-only replicas.
+
+## Section 3: Data Integrity, Schemas, and Serialization
+Data structures entering the runtime pipeline are verified against strict JSON schemas before deserialization. Fields marked as confidential must undergo deterministic tokenization prior to persistence. Data mutations require cryptographic signatures from verified agents. System telemetry records event timestamps using high-precision UTC clocks to avoid temporal ambiguity across distributed nodes. Any structural mismatch triggers automated isolation and review.
+
+## Section 4: Resource Quotas, Rate Limits, and Concurrency
+To ensure system stability, every tenant operates under strict compute allowances:
+1. Max concurrent asynchronous workers: 64 threads per logical shard.
+2. Token throughput threshold: 120,000 tokens per minute per organization key.
+3. Burst tolerance: 15% allowance over standard rate for up to 30 continuous seconds.
+4. Memory footprint ceiling: 512 megabytes per containerized micro-agent.
+Violations of these operational boundaries automatically yield HTTP status 429 with standard exponential backoff retry headers.
+
+## Section 5: Auditing, Telemetry, and Observability
+All agent actions are logged to immutable append-only ledgers. Telemetry collectors scrape spans at 100Hz, annotating traces with trace-parent headers compatible with the OpenTelemetry GenAI semantic conventions. Metric aggregators compute 95th and 99th percentile latencies across moving 5-minute windows. Anomalous deviations in token usage exceeding three standard deviations trigger alerts dispatched to designated site reliability engineers.
+
+## Section 6: Governance, Amendments, and Compliance
+Modifications to this operational standard require approval through consensus voting. Proposals must specify target commit hashes, formal verification proofs, and comprehensive migration scripts. Rollback procedures must be tested in staging environments prior to production rollout. In the event of critical security exploits, designated custodians maintain authority to pause non-essential query streams for a maximum duration of 120 minutes while remediation patches are applied.

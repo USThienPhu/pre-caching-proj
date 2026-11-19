@@ -1,0 +1,15 @@
+{
+  "name": "seminar-prompt-caching-study",
+  "version": "1.0.0",
+  "description": "A study on prompt caching: latency, token reduction, and cost",
+  "type": "module",
+  "scripts": {
+    "measure": "node src/measure.js",
+    "measure:live": "node src/measure.js --live",
+    "measure:replay": "node src/measure.js --replay"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.4.7"
+  }
+}
