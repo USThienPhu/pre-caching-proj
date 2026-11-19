@@ -2,8 +2,11 @@
 
 > **Môn học**: CSC13114 - Phát triển Ứng dụng Web Nâng cao (CQ2023/3)  
 > **Mã đề tài**: B5 - Cắt giảm chi phí mô hình: routing, prompt caching, batching  
-> **Kho lưu trữ (Repository)**: [https://github.com/your-username/seminar-prompt-caching-study](https://github.com/your-username/seminar-prompt-caching-study)  
-> **Thành viên nhóm**: `<MSSV1>`, `<MSSV2>`, `<MSSV3>`  
+> **Kho lưu trữ (Repository)**: [https://github.com/USThienPhu/pre-caching-proj](https://github.com/USThienPhu/pre-caching-proj)  
+> **Thành viên nhóm**:
+> * Trương Thành Phát — 23120319
+> * Thái Thiên Phú — 23120327
+> * Huỳnh Lê Minh Triết — 23120380
 
 ---
 
@@ -17,8 +20,8 @@ Bất kỳ ai (giảng viên chấm bài hoặc nhóm phản biện Red-team) kh
 ### Các bước thực hiện
 ```bash
 # 1. Clone repository về máy
-git clone https://github.com/your-username/seminar-prompt-caching-study.git
-cd seminar-prompt-caching-study
+git clone https://github.com/USThienPhu/pre-caching-proj.git
+cd pre-caching-proj
 
 # 2. Cài đặt các gói phụ thuộc (dotenv)
 npm install

@@ -1,8 +1,11 @@
 # REPORT: A Measured Look at Prompt Caching and KV Cache Reuse for Web Agents
 
-* **Repository**: [https://github.com/your-username/seminar-prompt-caching-study](https://github.com/your-username/seminar-prompt-caching-study)  
+* **Repository**: [https://github.com/USThienPhu/pre-caching-proj](https://github.com/USThienPhu/pre-caching-proj)  
 * **Topic Code**: B5 (Cutting model cost: routing, prompt caching, batching)  
-* **Authors**: [StudentID1, StudentID2, StudentID3]  
+* **Authors**:
+  * Trương Thành Phát — 23120319
+  * Thái Thiên Phú — 23120327
+  * Huỳnh Lê Minh Triết — 23120380
 * **Date**: November 2026  
 
 ---

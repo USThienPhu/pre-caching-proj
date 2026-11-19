@@ -2,7 +2,11 @@
 
 * **Course**: CSC13114 - Advanced Web Application Development (CQ2023/3)
 * **Topic**: B5 - Cutting model cost: routing, prompt caching, batching
-* **Team**: StudentID1, StudentID2, StudentID3
+* **Repository**: [https://github.com/USThienPhu/pre-caching-proj](https://github.com/USThienPhu/pre-caching-proj)
+* **Team Members**:
+  * Trương Thành Phát — 23120319
+  * Thái Thiên Phú — 23120327
+  * Huỳnh Lê Minh Triết — 23120380
 
 ---
 
